@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>sangdevshop</title>
+<link rel="stylesheet" href="https://js-plum-nine.vercel.app/style.css"> 
+</head>
+<body>
+
+<h1>DV SANGDEV</h1>
+
+<h2>1. Nhập danh sách câu hỏi </h2>
+<textarea id="input" placeholder="Ví dụ nhập thoải mái:
+
+Câu 1 NB: 1 + 1 = ? A. 1 B. 2 C. 3 D. 4 (đáp án B)
+Câu 2 TH: Giải phương trình x² - 4 = 0 (tự luận)
+Câu 3 VD: Chứng minh định lý Pitago trong tam giác vuông.
+Q001|NB|MCQ|Đại số|2+3 bằng mấy?|2|5|6|7|B|
+Q002|VDH|ESSAY|Hình học|Chứng minh tam giác ABC đồng dạng với tam giác DEF (theo trường hợp cạnh-góc-cạnh)||||||Thang điểm: 4đ ý chính + 2đ trình bày"></textarea>
+<br>
+<button onclick="parseQuestions()">Thêm vào ngân hàng</button>
+
+<div class="stats" id="stats">Chưa có câu hỏi nào</div>
+<div style="margin-top:8px;margin-bottom:8px;">
+  <button id="toggleDebugBtn" onclick="toggleParseDebug()" style="padding:6px 12px;font-size:0.9em;">Hiện / Ẩn Debug Parser</button>
+</div>
+<pre id="parseDebug" style="display:none;background:#111;color:#fff;padding:10px;border-radius:6px;max-height:240px;overflow:auto;font-size:12px;"></pre>
+
+<h2>2. Tạo mã đề thi</h2>
+<table>
+  <tr><th>Số mã đề cần tạo</th><td><input type="number" id="numVersions" value="4" min="1" max="30"></td></tr>
+  <tr><th colspan="2" style="background:#f39c12;color:white;text-align:center;">SỐ LƯỢNG CÂU THEO MỨC ĐỘ</th></tr>
+  <tr><th>Nhận biết (NB</th><td><input type="number" id="nb" value="5" min="0"></td></tr>
+  <tr><th>Thông hiểu (TH)</th><td><input type="number" id="th" value="4" min="0"></td></tr>
+  <tr><th>Vận dụng (VD)</th><td><input type="number" id="vd" value="3" min="0"></td></tr>
+  <tr><th>Vận dụng cao (VDH)</th><td><input type="number" id="vdh" value="2" min="0"></td></tr>
+  <tr><th colspan="2" style="background:#9b59b6;color:white;text-align:center;">LOẠI CÂU HỎI</th></tr>
+  <tr><th>Số câu trắc nghiệm</th><td><input type="number" id="numMCQ" value="10" min="0"></td></tr>
+  <tr><th>Số câu tự luận</th><td><input type="number" id="numEssay" value="4" min="0"></td></tr>
+</table>
+
+<p style="color:#e74c3c;font-weight:bold;">
+  Lưu ý: Tổng số câu trắc nghiệm + tự luận nên bằng hoặc gần bằng tổng NB+TH+VD+VDH.<br>
+  Hệ thống sẽ tự động ưu tiên chọn đúng loại câu hỏi theo mức độ.
+  code đang update tính năng nên hơi lỏ thông cảm nha
+</p>
+
+<button onclick="generateVersions()"><strong>TẠO </strong></button>
+
+<div id="result"></div>
+<script src="script.js"></script>
+</body>
+</html>
